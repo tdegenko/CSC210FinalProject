@@ -441,6 +441,7 @@ $app_name = idx($app_info, 'name', '');
     ?>
 
 	<section class = "myevents">
+        <div><?=$events?></div>
 		<?php
             foreach ($events as $event) {
               // Extract the pieces of info we need from the requests above
