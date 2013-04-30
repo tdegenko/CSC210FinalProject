@@ -75,7 +75,7 @@ if ($user_id) {
 
   $events = $facebook->api(array(
   	'method' => 'fql.query',
-    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = 221167777906963) AND start_time >= now() ORDER BY start_time desc'
+    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = '.$user_id.') AND start_time >= now() ORDER BY start_time desc'
   ));
 
 }
