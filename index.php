@@ -329,13 +329,13 @@ $app_name = idx($app_info, 'name', '');
 	$startday = $thismonth['wday'];
 	for ($i=0; $i<($maxday+$startday); $i++) {
 
-	    if(($i % 7) == 0 ) echo "<tr>n";
+	    if(($i % 7) == 0 ) echo "<tr>";
 
-	    if($i < $startday) echo "<td></td>n";
+	    if($i < $startday) echo "<td></td>";
 
-	    else echo "<td align='center' valign='middle' height='20px'>". ($i - $startday + 1) . "</td>n";
+	    else echo "<td align='center' valign='middle' height='20px'>". ($i - $startday + 1) . "</td>";
 
-	    if(($i % 7) == 6 ) echo "</tr>n";
+	    if(($i % 7) == 6 ) echo "</tr>";
 	}
 	?>
 	</table>
