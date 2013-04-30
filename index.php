@@ -71,6 +71,11 @@ if ($user_id) {
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
+
+  $events = $facebook->api(array(
+  	'method' => 'fql.query',
+    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = 221167777906963) AND start_time >= now() ORDER BY start_time desc'
+  ));
 }
 
 // Fetch the basic info of the app that they are using
@@ -357,6 +362,33 @@ $app_name = idx($app_info, 'name', '');
     <?php
       }
     ?>
+
+	<section class = "myevents">
+		<?php
+            foreach ($events as $event) {
+              // Extract the pieces of info we need from the requests above
+              $name = idx($event, 'name');
+			  $pic = idx($event, 'pic');
+			  $stime = idx($event, 'start_time');
+			  $etime = idx($event, 'end_time');
+			  $location = idx($event, 'location');
+			  $info = idx($event, 'description');
+          ?>
+          <li>
+	        
+            <div class='floatLeft eventImage'><img src= <?php echo he($pic); ?> width='150px' /></div>
+			<div class='floatLeft'>
+				<div class='eventName'><?php echo he($name); ?></div>
+				<div class='eventInfo'><?php echo he($stime); ?></div>
+				<div class='eventInfo'><?php echo he($etime); ?></div>
+				<div class='eventInfo'><?php echo he($location); ?></div>
+				<div class='eventInfo'><?php echo he($info); ?></div>
+			</div>
+          </li>
+          <?php
+            }
+          ?>
+    </section>
 
     <section id="guides" class="clearfix">
       <h1>Learn More About Heroku &amp; Facebook Apps</h1>
