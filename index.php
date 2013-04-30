@@ -147,6 +147,11 @@ $app_name = idx($app_info, 'name', '');
           );
         });
 
+		FB.logout(function(response) {
+		                // user is now logged out
+		            });
+		
+
         $('#sendRequest').click(function() {
           FB.ui(
             {
@@ -211,7 +216,7 @@ $app_name = idx($app_info, 'name', '');
     <header class="clearfix">
       <?php if (isset($basic)) { ?>
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
-
+      <a href="/logout" onclick="FB.logout();">Logout</a> 
       <div>
         <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
         <p class="tagline">
