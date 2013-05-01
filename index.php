@@ -187,7 +187,6 @@ $app_name = idx($app_info, 'name', '');
     <![endif]-->
   </head>
   <body>
-    <div> <?=$user_id?></div>
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
@@ -457,7 +456,7 @@ $app_name = idx($app_info, 'name', '');
             <div class='floatLeft eventImage'><img src= <?php echo he($pic); ?> width='150px' /></div>
 			<div class='floatLeft'>
 				<div class='eventName'><?php echo he($name); ?></div>
-				<div class='eventInfo'><?php echo he(strtotime($stime)); ?></div>
+				<div class='eventInfo'><?php echo he($stime); ?></div>
 				<div class='eventInfo'><?php echo he($etime); ?></div>
 				<div class='eventInfo'><?php echo he($location); ?></div>
 <!--				<div class='eventInfo'><?php echo he($info); ?></div> -->
