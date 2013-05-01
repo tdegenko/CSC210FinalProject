@@ -460,7 +460,7 @@ $app_name = idx($app_info, 'name', '');
 				<div class='eventInfo'><?php echo he($stime); ?></div>
 				<div class='eventInfo'><?php echo he($etime); ?></div>
 				<div class='eventInfo'><?php echo he($location); ?></div>
-				<div class='eventInfo'><?php echo he($info); ?></div>
+<!--				<div class='eventInfo'><?php echo he($info); ?></div> -->
 			</div>
           </li>
           <?php
