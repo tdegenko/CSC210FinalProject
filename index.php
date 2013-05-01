@@ -42,6 +42,7 @@ $facebook = new Facebook(array(
 
 $user_id = $facebook->getUser();
 if ($user_id) {
+  echo $user_id;
   try {
     // Fetch the viewer's basic information
     $basic = $facebook->api('/me');
@@ -77,7 +78,7 @@ if ($user_id) {
 
   $events = $facebook->api(array(
   	'method' => 'fql.query',
-    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = 221167777906963) AND start_time >= now() ORDER BY start_time desc'
+    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
   ));
 
 }
@@ -257,7 +258,7 @@ $app_name = idx($app_info, 'name', '');
       <?php } else { ?>
       <div>
         <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_likes,user_photos,user_events,create_event"></div>
       </div>
       <?php } ?>
     </header>
@@ -346,93 +347,6 @@ $app_name = idx($app_info, 'name', '');
     <section id="samples" class="clearfix">
       <h1>Examples of the Facebook Graph API</h1>
 
-      <div class="list">
-        <h3>A few of your friends</h3>
-        <ul class="friends">
-          <?php
-            foreach ($friends as $friend) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($friend, 'id');
-              $name = idx($friend, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list inline">
-        <h3>Recent photos</h3>
-        <ul class="photos">
-          <?php
-            $i = 0;
-            foreach ($photos as $photo) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($photo, 'id');
-              $picture = idx($photo, 'picture');
-              $link = idx($photo, 'link');
-
-              $class = ($i++ % 4 === 0) ? 'first-column' : '';
-          ?>
-          <li style="background-image: url(<?php echo he($picture); ?>);" class="<?php echo $class; ?>">
-            <a href="<?php echo he($link); ?>" target="_top"></a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Things you like</h3>
-        <ul class="things">
-          <?php
-            foreach ($likes as $like) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($like, 'id');
-              $item = idx($like, 'name');
-
-              // This display's the object that the user liked as a link to
-              // that object's page.
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($item); ?>">
-              <?php echo he($item); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Friends using this app</h3>
-        <ul class="friends">
-          <?php
-            foreach ($app_using_friends as $auf) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($auf, 'uid');
-              $name = idx($auf, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
     </section>
 
     <?php
@@ -440,6 +354,7 @@ $app_name = idx($app_info, 'name', '');
     ?>
 
 	<section class = "myevents">
+        <div><?=$events[1]?></div>
 		<?php
             foreach ($events as $event) {
               // Extract the pieces of info we need from the requests above
@@ -458,7 +373,7 @@ $app_name = idx($app_info, 'name', '');
 				<div class='eventInfo'><?php echo he($stime); ?></div>
 				<div class='eventInfo'><?php echo he($etime); ?></div>
 				<div class='eventInfo'><?php echo he($location); ?></div>
-				<div class='eventInfo'><?php echo he($info); ?></div>
+<!--				<div class='eventInfo'><?php echo he($info); ?></div> -->
 			</div>
           </li>
           <?php
