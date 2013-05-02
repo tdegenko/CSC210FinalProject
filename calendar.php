@@ -30,34 +30,34 @@ if ($next_month == 13 ) {
 	<script src="calendar.js" type="text/javascript"></script>
 </head>
 
-<table width="100%">
-<tr>
-<td class="title">
-<table width="100%">
-<tr>
-<td width="50%" align="left"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $prev_month . "&year=" . $prev_year; ?>" class="title">Previous</a></td>
-<td width="50%" align="right"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $next_month . "&year=" . $next_year; ?>" class="title">Next</a></td>
-</tr>
-</table>
-</td>
-</tr>
-
 <div id="tables">
-<tr>
-<td>
-<table width="100%">
-<tr>
-<td colspan="7" class="title"><?php echo $monthNames[$cMonth-1].' '.$cYear; ?></td>
-</tr>
-<tr>
-<td class="title">Sunday</td>
-<td class="title">Monday</td>
-<td class="title">Tuesday</td>
-<td class="title">Wednesday</td>
-<td class="title">Thursday</td>
-<td class="title">Friday</td>
-<td class="title">Saturday</td>
-</tr>
+    <table width="100%">
+        <tr>
+            <td class="title">
+                <table width="100%">
+                    <tr>
+                        <td width="50%" align="left"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $prev_month . "&year=" . $prev_year; ?>" class="title">Previous</a></td>
+                        <td width="50%" align="right"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $next_month . "&year=" . $next_year; ?>" class="title">Next</a></td>
+                   </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td colspan="7" class="title"><?php echo $monthNames[$cMonth-1].' '.$cYear; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Sunday</td>
+                        <td class="title">Monday</td>
+                        <td class="title">Tuesday</td>
+                        <td class="title">Wednesday</td>
+                        <td class="title">Thursday</td>
+                        <td class="title">Friday</td>
+                        <td class="title">Saturday</td>
+                    </tr>
 
 <?php 
 $timestamp = mktime(0,0,0,$cMonth,1,$cYear);
@@ -72,8 +72,8 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 }
 ?>
 
-</table>
-</td>
-</tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </div>
-</table>
