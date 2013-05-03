@@ -22,13 +22,11 @@ if ($next_month == 13 ) {
     $next_year = $cYear + 1;
 }
 ?>
-<head>
-	<title>Calendar</title>
-	<link href="calendar.css" type="text/css" rel="stylesheet" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="calendar.js" type="text/javascript"></script>
-</head>
+
+<link href="calendar.css" type="text/css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
+<script src="calendar.js" type="text/javascript"></script>
 
 <div id="tables">
     <table width="100%">
