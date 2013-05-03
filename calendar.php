@@ -22,26 +22,13 @@ if ($next_month == 13 ) {
     $next_year = $cYear + 1;
 }
 ?>
-<head>
-	<title>Calendar</title>
-	<link href="calendar.css" type="text/css" rel="stylesheet" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="calendar.js" type="text/javascript"></script>
-</head>
-
+<meta name="nyear" content="<?=$next_year?>"/>
+<meta name="nmonth" content="<?=$next_month?>"/>
+<meta name="pyear" content="<?=$prev_year?>"/>
+<meta name="pmonth" content="<?=$prev_month?>"/>
+<link href="calendar.css" type="text/css" rel="stylesheet" />
 <div id="tables">
     <table width="100%">
-        <tr>
-            <td class="title">
-                <table width="100%">
-                    <tr>
-                        <td width="50%" align="left"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $prev_month . "&year=" . $prev_year; ?>" class="title">Previous</a></td>
-                        <td width="50%" align="right"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $next_month . "&year=" . $next_year; ?>" class="title">Next</a></td>
-                   </tr>
-                </table>
-            </td>
-        </tr>
 
         <tr>
             <td>
@@ -58,7 +45,6 @@ if ($next_month == 13 ) {
                         <td class="title">Friday</td>
                         <td class="title">Saturday</td>
                     </tr>
-
 <?php 
 $timestamp = mktime(0,0,0,$cMonth,1,$cYear);
 $maxday = date("t",$timestamp);
@@ -67,7 +53,7 @@ $startday = $thismonth['wday'];
 for ($i=0; $i<($maxday+$startday); $i++) {
     if(($i % 7) == 0 ) echo "<tr>";
     if($i < $startday) echo "<td></td>";
-    else echo "<td align='center' valign='middle' height='20px'>". "<a href='date.php?day=$i&month=$cMonth&year=$cYear'>". ($i - $startday + 1)."</a>". "</td>";
+    else echo "<td class=\"day\">". "<a href='date.php?day=$i&month=$cMonth&year=$cYear'>". ($i - $startday + 1)."</a>". "</td>";
     if(($i % 7) == 6 ) echo "</tr>";
 }
 ?>
