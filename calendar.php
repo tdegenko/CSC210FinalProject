@@ -17,6 +17,9 @@ $facebook = new Facebook(array(
   'trustForwarded' => true,
 ));
 
+$access_token = $_SESSION['token'];
+$facebook->setAccessToken($access_token);
+
 $user_id = $facebook->getUser();
 if ($user_id) {
   try {
@@ -30,10 +33,14 @@ if ($user_id) {
 //      exit();
     }
   }
-// $events = $facebook->api(array(
-//    'method' => 'fql.query',
-//    'query' => 'SELECT name, pic, start_time, end_time, location, description FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
-//  ));
+ $events = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT name, pic, start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
+  ));
+ $fevents = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT name, pic, start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
+  ));
 
 }
 

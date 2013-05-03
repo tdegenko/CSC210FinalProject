@@ -40,6 +40,9 @@ $facebook = new Facebook(array(
   'trustForwarded' => true,
 ));
 
+$access_token = $facebook->getAccessToken();
+$_SESSION['token'] = $access_token;
+
 $user_id = $facebook->getUser();
 if ($user_id) {
   try {
