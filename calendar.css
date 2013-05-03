@@ -3,3 +3,12 @@
 	background-color: #999999;
 	color: #FFFFFF;
 	font-weight: bold; }
+.day{
+    width:14%;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+}
+.busy{
+    background: #999;
+}
