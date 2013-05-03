@@ -42,7 +42,6 @@ $facebook = new Facebook(array(
 
 $user_id = $facebook->getUser();
 if ($user_id) {
-  echo $user_id;
   try {
     // Fetch the viewer's basic information
     $basic = $facebook->api('/me');
@@ -58,21 +57,21 @@ if ($user_id) {
   // This fetches some things that you like . 'limit=*" only returns * values.
   // To see the format of the data you are retrieving, use the "Graph API
   // Explorer" which is at https://developers.facebook.com/tools/explorer/
-   $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
+  // $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
 
   // This fetches 4 of your friends.
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
+  // $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
 
   // And this returns 16 of your photos.
-   $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
+  // $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
 
-  $app_using_friends = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  ));
+  // $app_using_friends = $facebook->api(array(
+  //   'method' => 'fql.query',
+  //   'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+  // ));
 
    //Reading you events
 
@@ -117,6 +116,8 @@ $app_name = idx($app_info, 'name', '');
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
     <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
+    <script src="calendar.js" type="text/javascript"></script>
+
 
     <script type="text/javascript">
       function logResponse(response) {
@@ -268,90 +269,23 @@ $app_name = idx($app_info, 'name', '');
       if ($user_id) {
     ?>
 
-	<?php
-	$monthNames = Array("January", "February", "March", "April", "May", "June", "July",
-	"August", "September", "October", "November", "December");
-
-	if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("n");
-	if (!isset($_REQUEST["year"])) $_REQUEST["year"] = date("Y");
-
-	$cMonth = $_REQUEST["month"];
-	$cYear = $_REQUEST["year"];
-
-	$prev_year = $cYear;
-	$next_year = $cYear;
-	$prev_month = $cMonth-1;
-	$next_month = $cMonth+1;
-
-	if ($prev_month == 0 ) {
-
-	    $prev_month = 12;
-
-	    $prev_year = $cYear - 1;
-	}
-	if ($next_month == 13 ) {
-
-	    $next_month = 1;
-
-	    $next_year = $cYear + 1;
-	}
-	?>
-
-	<table width="200">
-	<tr align="center">
-	<td bgcolor="#999999" style="color:#FFFFFF">
-	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-	<td width="50%" align="left"> <a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $prev_month . "&year=" . $prev_year; ?>" style="color:#FFFFFF">Previous</a></td>
-	<td width="50%" align="right"><a href="<?php echo $_SERVER["PHP_SELF"] . "?month=". $next_month . "&year=" . $next_year; ?>" style="color:#FFFFFF">Next</a> </td>
-	</tr>
-	</table>
-	</td>
-	</tr>
-	<tr>
-	<td align="center">
-	<table width="100%" border="0" cellpadding="2" cellspacing="2">
-	<tr align="center">
-	<td colspan="7" bgcolor="#999999" style="color:#FFFFFF"><strong><?php echo $monthNames[$cMonth-1].' '.$cYear; ?></strong></td>
-	</tr>
-	<tr>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>S</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>M</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>T</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>W</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>T</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>F</strong></td>
-	<td align="center" bgcolor="#999999" style="color:#FFFFFF"><strong>S</strong></td>
-	</tr>
-	<?php
-	$timestamp = mktime(0,0,0,$cMonth,1,$cYear);
-	$maxday = date("t",$timestamp);
-	$thismonth = getdate ($timestamp);
-	$startday = $thismonth['wday'];
-	for ($i=0; $i<($maxday+$startday); $i++) {
-
-	    if(($i % 7) == 0 ) echo "<tr>n";
-
-	    if($i < $startday) echo "<td></td>n";
-
-	    else echo "<td align='center' valign='middle' height='20px'>". ($i - $startday + 1) . "</td>n";
-
-	    if(($i % 7) == 6 ) echo "</tr>n";
-	}
-	?>
-	</table>
-	</td>
-	</tr>
-	</table>
-
-    <section id="samples" class="clearfix">
-      <h1>Examples of the Facebook Graph API</h1>
-
-    </section>
-
-    <?php
-      }
-    ?>
+    <div>
+    <table width="100%">
+        <tr>
+            <td class="title">
+                <table width="100%">
+                    <tr>
+                        <td width="50%" align="left"><a href="" id="prev">Previous</a></td>
+                        <td width="50%" align="right"><a href="" id="next">Next</a></td>
+                   </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div id="tables">
+    <?php include 'calendar.php'?>
+    </div>
+    </div>
 
 	<section class = "myevents">
         <div><?=$events[1]?></div>
@@ -380,6 +314,10 @@ $app_name = idx($app_info, 'name', '');
             }
           ?>
     </section>
+
+    <?php
+      }
+    ?>
 
     <section id="guides" class="clearfix">
       <h1>Learn More About Heroku &amp; Facebook Apps</h1>
