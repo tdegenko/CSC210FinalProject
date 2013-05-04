@@ -22,6 +22,28 @@ $facebook->setAccessToken($access_token);
 
 $user_id = $facebook->getUser();
 if ($user_id) {
+  $monthNames = Array("January", "February", "March", "April", "May", "June", "July", 
+  "August", "September", "October", "November", "December");
+  if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("n");
+  if (!isset($_REQUEST["year"])) $_REQUEST["year"] = date("Y");
+  
+  $cMonth = $_REQUEST["month"];
+  $cYear = $_REQUEST["year"];
+  $flist= $_REQUEST["friends"];
+   
+  $prev_year = $cYear;
+  $next_year = $cYear;
+  $prev_month = $cMonth-1;
+  $next_month = $cMonth+1;
+   
+  if ($prev_month == 0 ) {
+      $prev_month = 12;
+      $prev_year = $cYear - 1;
+  }
+  if ($next_month == 13 ) {
+      $next_month = 1;
+      $next_year = $cYear + 1;
+  }
   try {
     // Fetch the viewer's basic information
     $basic = $facebook->api('/me');
@@ -33,41 +55,25 @@ if ($user_id) {
 //      exit();
     }
   }
- $events = $facebook->api(array(
+ $mevents = $facebook->api(array(
     'method' => 'fql.query',
-    'query' => 'SELECT name, pic, start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
+    'query' => 'SELECT start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >='.strtotime($cMonth."/1/".$cYear).' AND start_time <='.strtotime($next_month."/1/".$cYear).' ORDER BY start_time desc'
   ));
- $fevents = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 'SELECT name, pic, start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE uid = me()) AND start_time >= now() ORDER BY start_time desc'
-  ));
+ if ($flist){
+    $fqlflist="uid=$flist[0]";
+    unset($flist[0]);
+    var_dump($flist);
+    foreach ($flist as $f){
+        $fqlflist.=" OR uid=$f";
+    }
+    $fevents = $facebook->api(array(
+        'method' => 'fql.query',
+        'query' => 'SELECT start_time FROM event WHERE eid IN(SELECT eid FROM event_member WHERE '.$fqlflist.') AND start_time >='.strtotime($cMonth."/1/".$cYear).' AND start_time <='.strtotime($next_month."/1/".$cYear).' ORDER BY start_time desc'
+    ));
+ }
 
 }
 
-?>
-<?php
-$monthNames = Array("January", "February", "March", "April", "May", "June", "July", 
-"August", "September", "October", "November", "December");
-
-if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("n");
-if (!isset($_REQUEST["year"])) $_REQUEST["year"] = date("Y");
-
-$cMonth = $_REQUEST["month"];
-$cYear = $_REQUEST["year"];
- 
-$prev_year = $cYear;
-$next_year = $cYear;
-$prev_month = $cMonth-1;
-$next_month = $cMonth+1;
- 
-if ($prev_month == 0 ) {
-    $prev_month = 12;
-    $prev_year = $cYear - 1;
-}
-if ($next_month == 13 ) {
-    $next_month = 1;
-    $next_year = $cYear + 1;
-}
 ?>
 <meta name="nyear" content="<?=$next_year?>"/>
 <meta name="nmonth" content="<?=$next_month?>"/>
@@ -95,12 +101,28 @@ if ($next_month == 13 ) {
 <?php 
 $timestamp = mktime(0,0,0,$cMonth,1,$cYear);
 $maxday = date("t",$timestamp);
+$busy=array();
+foreach($mevents as $event){
+    $date=idx($event,'start_time');
+    $busy[(int)date("d",strtotime($date))]="busy";
+}
 $thismonth = getdate ($timestamp);
 $startday = $thismonth['wday'];
 for ($i=0; $i<($maxday+$startday); $i++) {
-    if(($i % 7) == 0 ) echo "<tr>";
-    if($i < $startday) echo "<td></td>";
-    else echo "<td class=\"day\">". "<a href='date.php?day=$i&month=$cMonth&year=$cYear'>". ($i - $startday + 1)."</a>". "</td>";
+    if(($i % 7) == 0 ){
+?>
+        <tr>
+<?php
+    }
+    if($i < $startday){
+?>
+       <td></td>
+<?php
+    }else{
+?>
+     <td class="day <?=$busy[($i-$startday+1)]?>"><a href='date.php?day=<?=$i?>&month=<?=$cMonth?>&year=<?=$cYear?>'><?=($i - $startday + 1)?></a></td>
+<?php
+    }
     if(($i % 7) == 6 ) echo "</tr>";
 }
 ?>
