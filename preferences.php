@@ -1,4 +1,4 @@
-<form id="preferences" method="post" action="submit.php">
+<form id="preferences" method="get" action="submit.php">
 	<fieldset>
 		<legend>Preferences:</legend>
 		<table width="50%">
@@ -11,10 +11,10 @@
 				<td><input name="first" value="Mexican" type="radio" />Mexican</td>
 			</tr>
 			<tr>
-				<td><input name="first" value="Pizza" type="radio" />Pizza</td>
+				<td><input name="first" value="Polish" type="radio" />Pizza</td>
 				<td><input name="first" value="Seafood" type="radio" />Seafood</td>
 				<td><input name="first" value="Steakhouses" type="radio" />Steakhouses</td>
-				<td><input name="first" value="Sushi" type="radio" />Sushi Bars</td>
+				<td><input name="first" value="Sushi " type="radio" />Sushi Bars</td>
 				<td><input name="first" value="Thai" type="radio" />Thai</td>
 			</tr>
 		</table>
@@ -45,10 +45,10 @@
 				<td><input name="third" value="Mexican" type="radio" />Mexican</td>
 			</tr>
 			<tr>
-				<td><input name="third" value="Pizza" type="radio" />Pizza</td>
+				<td><input name="third" value="Polish" type="radio" />Pizza</td>
 				<td><input name="third" value="Seafood" type="radio" />Seafood</td>
 				<td><input name="third" value="Steakhouses" type="radio" />Steakhouses</td>
-				<td><input name="third" value="Sushi" type="radio" />Sushi Bars</td>
+				<td><input name="third" value="Sushi " type="radio" />Sushi Bars</td>
 				<td><input name="third" value="Thai" type="radio" />Thai</td>
 			</tr>
 		</table>
