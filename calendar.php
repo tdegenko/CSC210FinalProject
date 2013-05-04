@@ -77,6 +77,8 @@ if ($user_id) {
 ?>
 <meta name="nyear" content="<?=$next_year?>"/>
 <meta name="nmonth" content="<?=$next_month?>"/>
+<meta name="cyear" content="<?=$cYear?>"/>
+<meta name="cmonth" content="<?=$cMonth?>"/>
 <meta name="pyear" content="<?=$prev_year?>"/>
 <meta name="pmonth" content="<?=$prev_month?>"/>
 <link href="calendar.css" type="text/css" rel="stylesheet" />
@@ -120,7 +122,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 <?php
     }else{
 ?>
-     <td class="day <?=$busy[($i-$startday+1)]?>"><a href='date.php?day=<?=$i?>&month=<?=$cMonth?>&year=<?=$cYear?>'><?=($i - $startday + 1)?></a></td>
+     <td class="day <?=$busy[($i-$startday+1)]?> <?=($i-$startday+1)?>"><a href='daycal.php?day=<?=$i?>&month=<?=$cMonth?>&year=<?=$cYear?>'><?=($i - $startday + 1)?></a></td>
 <?php
     }
     if(($i % 7) == 6 ) echo "</tr>";

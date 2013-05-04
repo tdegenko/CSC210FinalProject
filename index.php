@@ -99,6 +99,7 @@ $app_name = idx($app_info, 'name', '');
 
     <title><?php echo he($app_name); ?></title>
     <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="base.css" media="Screen" type="text/css" />
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
 
     <!--[if IEMobile]>
@@ -120,6 +121,7 @@ $app_name = idx($app_info, 'name', '');
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="calendar.js" type="text/javascript"></script>
+    <script src="daycal.js" type="text/javascript"></script>
 
 
     <script type="text/javascript">
@@ -271,8 +273,7 @@ $app_name = idx($app_info, 'name', '');
     <?php
       if ($user_id) {
     ?>
-
-    <div>
+    <section class="calendar">
     <table width="100%">
         <tr>
             <td class="title">
@@ -288,36 +289,11 @@ $app_name = idx($app_info, 'name', '');
     <div id="tables">
     <?php include 'calendar.php'?>
     </div>
+    
+    <div id="daycal">
     </div>
-
-	<section class = "myevents">
-        <div><?=$events[1]?></div>
-		<?php
-            foreach ($events as $event) {
-              // Extract the pieces of info we need from the requests above
-              $name = idx($event, 'name');
-			  $pic = idx($event, 'pic');
-			  $stime = idx($event, 'start_time');
-			  $etime = idx($event, 'end_time');
-			  $location = idx($event, 'location');
-			  $info = idx($event, 'description');
-          ?>
-          <li>
-	        
-            <div class='floatLeft eventImage'><img src= <?php echo he($pic); ?> width='150px' /></div>
-			<div class='floatLeft'>
-				<div class='eventName'><?php echo he($name); ?></div>
-				<div class='eventInfo'><?php echo he($stime); ?></div>
-				<div class='eventInfo'><?php echo he($etime); ?></div>
-				<div class='eventInfo'><?php echo he($location); ?></div>
-<!--				<div class='eventInfo'><?php echo he($info); ?></div> -->
-			</div>
-          </li>
-          <?php
-            }
-          ?>
     </section>
-
+    
     <?php
       }
     ?>
