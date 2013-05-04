@@ -1,0 +1,33 @@
+.wrap{
+    padding:    0;
+    position:   relative;
+}
+.mainDay{
+    height:     1440px;
+    width:      100%;
+    border-collapse:collapse;
+}
+
+.hour{
+    border-style:   solid;
+    border-width:   1px;
+    border-color:   #ddd;
+    border-left:    none;
+    border-right:   none;
+    text-align:     left;
+    vertical-align: top;
+}
+.hour td{
+    padding-left:   2%;
+}
+
+.busyh{
+    background:     rgba(0,0,0,.5);
+    position:       absolute;
+    margin-left:    4%;
+    margin-right:   4%;
+    border-radius:  10px;
+    width:          92%;
+    padding-left:   2%;
+    padding-right:   2%;
+}
