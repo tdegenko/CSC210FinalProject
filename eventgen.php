@@ -67,7 +67,6 @@ if ($user_id) {
         <p><label for="name">Event Name</label><input type="text" name="name" value="" /></p>
         <p><label for="description">Event Description</label><textarea name="description"></textarea></p>
         <p><label for="location">Location</label><input type="text" name="location" value="" /></p>
-        <p><label for="picture">Event Picture</label><input type="file" name="picture" /></p>
         <p>Date: <input type="text" id="datepicker" />
         </p>
         <p>
