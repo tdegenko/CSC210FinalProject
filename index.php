@@ -120,6 +120,8 @@ $app_name = idx($app_info, 'name', '');
     <meta property="fb:app_id" content="<?php echo AppInfo::appID(); ?>" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="javascript/utils.js" type="text/javascript"></script>
     <script src="calendar.js" type="text/javascript"></script>
     <script src="daycal.js" type="text/javascript"></script>
 

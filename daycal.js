@@ -35,7 +35,6 @@ $(document).ready(function() {
             "min":      sm,
             "friends":  []
         }
-        console.log(data);
         $.get("eventgen.php", data,function(data){
             $('#eventgen').slideUp(function(){
                 $('#eventgen').html(data).slideDown();

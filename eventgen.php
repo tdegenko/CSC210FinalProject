@@ -1,6 +1,5 @@
 <?php
 require_once('AppInfo.php');
-require_once('daycalutils.php');
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
@@ -26,6 +25,8 @@ if ($user_id) {
   if (!isset($_REQUEST["month"])) $_REQUEST["month"] = date("n");
   if (!isset($_REQUEST["year"])) $_REQUEST["year"] = date("Y");
   if (!isset($_REQUEST["day"])) $_REQUEST["day"] = date("d");
+  if (!isset($_REQUEST["hour"])) $_REQUEST["hour"] = date("G");
+  if (!isset($_REQUEST["min"])) $_REQUEST["min"] = date("i");
   $month= $_REQUEST["month"];
   $year = $_REQUEST["year"];
   $day  = $_REQUEST["day"];
@@ -56,6 +57,69 @@ if ($user_id) {
     $access_token = $facebook->getAccessToken();
     $event_url = "https://graph.facebook.com/me/events?access_token=".$access_token;
     ?>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="javascript/utils.js"></script>
+    <script>
+            $( "#datepicker" ).datepicker();
+            $( "#datepicker" ).datepicker("setDate",<?=$month."/".$day."/".$year?>);
+    </script>
+    <form id="eventform" enctype="multipart/form-data" action="<?php echo $event_url; ?>" method="post">
+        <p><label for="name">Event Name</label><input type="text" name="name" value="" /></p>
+        <p><label for="description">Event Description</label><textarea name="description"></textarea></p>
+        <p><label for="location">Location</label><input type="text" name="location" value="" /></p>
+        <p><label for="picture">Event Picture</label><input type="file" name="picture" /></p>
+        <p>Date: <input type="text" id="datepicker" />
+        </p>
+        <p>
+        Start Time: <select name="shour">
+        <?php 
+            for($i=0;$i<24;$i++){
+        ?>
+            <option value="<?=$i?>" <?php if($i==$hour){echo('selected="selected"');}?>><?=$i?>h</option>
+        <?php
+        }
+        ?>
+        </select>
+        <select name="smin">
+        <?php 
+            for($i=0;$i<60;$i++){
+        ?>
+            <option value="<?=$i?>" <?php if($i==$min){echo('selected="selected"');}?>><?=$i?>m</option>
+        <?php
+        }
+        ?>
+        </select>
+        </p>
+        <p>
+        End Time: <select name="ehour">
+        <?php 
+            for($i=0;$i<24;$i++){
+        ?>
+            <option value="<?=$i?>" <?php if($i==$hour+1){echo('selected="selected"');}?>><?=$i?>h</option>
+        <?php
+        }
+        ?>
+        </select>
+        <select name="emin">
+        <?php 
+            for($i=0;$i<60;$i++){
+        ?>
+            <option value="<?=$i?>" <?php if($i==$min){echo('selected="selected"');}?>><?=$i?>m</option>
+        <?php
+        }
+        ?>
+        </select>
+        <p>
+            <label for="privacy_type">Privacy</label>
+            <input type="radio" name="privacy_type" value="OPEN" checked='checked'/>Open&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="privacy_type" value="CLOSED" />Closed&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="privacy_type" value="SECRET" />Secret&nbsp;&nbsp;&nbsp;
+        </p>
+        <p><input type="submit" value="Create Event" /></p>
+    </form>
+    <div>
+<!--    ==================OLD VERSION==================
+    </div>
     <form enctype="multipart/form-data" action="<?php echo $event_url; ?>" method="post">
         <p><label for="name">Event Name</label><input type="text" name="name" value="" /></p>
         <p><label for="description">Event Description</label><textarea name="description"></textarea></p>
@@ -74,4 +138,4 @@ if ($user_id) {
     <?php
       }
     ?>
-
+-->
