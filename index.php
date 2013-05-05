@@ -121,7 +121,7 @@ $app_name = idx($app_info, 'name', '');
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-smoothness/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="jquery-ui.css" type="text/css" media="all" />
     <script src="javascript/utils.js" type="text/javascript"></script>
     <script src="calendar.js" type="text/javascript"></script>
     <script src="daycal.js" type="text/javascript"></script>

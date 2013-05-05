@@ -57,7 +57,6 @@ if ($user_id) {
     $access_token = $facebook->getAccessToken();
     $event_url = "https://graph.facebook.com/me/events?access_token=".$access_token;
     ?>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="javascript/utils.js"></script>
     <script>
             $( "#datepicker" ).datepicker();
