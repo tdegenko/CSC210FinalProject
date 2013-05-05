@@ -1,6 +1,11 @@
 .wrap{
-    padding:    0;
+    padding:    0px;
     position:   relative;
+    overflow-y: scroll;
+    margin-top: 24px;
+    border: 3px solid #b3b3b3;
+    border-radius: 2px;
+    max-height: 500px;
 }
 .mainDay{
     height:     1440px;
@@ -29,5 +34,6 @@
     border-radius:  10px;
     width:          92%;
     padding-left:   2%;
-    padding-right:   2%;
+    padding-right:  2%;
+    color:          #fff;
 }

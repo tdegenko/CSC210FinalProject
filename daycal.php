@@ -62,6 +62,7 @@ if ($user_id) {
 }
 
 ?>
+<meta name="cday" content="<?=$day?>"/>
 <link href="daycal.css" type="text/css" rel="stylesheet" />
 <div class="wrap">
 <?php

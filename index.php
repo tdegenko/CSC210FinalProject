@@ -292,6 +292,9 @@ $app_name = idx($app_info, 'name', '');
     
     <div id="daycal">
     </div>
+    
+    <div id="eventgen">
+    </div>
     </section>
     
     <?php
