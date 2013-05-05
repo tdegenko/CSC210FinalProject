@@ -16,7 +16,7 @@ $(document).ready(function() {
         sm=e.offsetY;
         sh=$.trim($(this).text());
         if (sm<15){
-            sm="00";
+            sm=0;
         }else{
             if (sm<45){
                 sm=30;
@@ -24,19 +24,22 @@ $(document).ready(function() {
                 sh=sh+1;
             }
         }
-        if(sh<10){
-            sh="0"+sh;
-        }
         year=$('meta[name=cyear]').attr("content");
         month=$('meta[name=cmonth]').attr("content");
-        if(month<10){
-            month="0"+month;
-        }
         day=$('meta[name=cday]').attr("content");
-        if(day<10){
-            day="0"+day;
+        var data = {
+            "month":    month,
+            "year":     year,
+            "day":      day,
+            "hour":     sh,
+            "min":      sm,
+            "friends":  []
         }
-        time=year+"-"+month+"-"+day+"T"+sh+":"+sm+":00";
-        console.log(time);
+        console.log(data);
+        $.get("eventgen.php", data,function(data){
+            $('#eventgen').slideUp(function(){
+                $('#eventgen').html(data).slideDown();
+            });
+        });
     });
 });
