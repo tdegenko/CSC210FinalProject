@@ -135,9 +135,9 @@ $app_using_friends = $facebook->api(array(
 		              // Extract the pieces of info we need from the requests above
 		              $id = idx($friend, 'id');
 		              $name = idx($friend, 'name');
-		              if ($w == 5){
+		              if ($w % 5== 0){
 			          echo "<br>";
-			          $w=0
+			          
 		}
 		          ?>
 	            <input type = "checkbox" name = "attend[]" value = "<?php echo he($id); ?>">
