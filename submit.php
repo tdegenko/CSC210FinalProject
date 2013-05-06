@@ -6,8 +6,6 @@ $url=parse_url(getenv("mysql://b783dc7602db19:82b9b599@us-cdbr-east-03.cleardb.c
     $username = $url["user"];
     $password = $url["pass"];
     $db = substr($url["path"],1);
-
-    mysql_connect($server, $username, $password);
             
 
 
@@ -17,7 +15,7 @@ $con = mysql_connect($server, $username, $password);
 if (!$con){
 	die ("Unable to connect db");
 }
-$select = mysql_select_db("heroku_07b0bb3ebe31bc2");
+$select = mysql_select_db($db);
 if (!$select){
 	die ("Unable to connect database");
 }
