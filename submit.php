@@ -60,7 +60,7 @@ if ($user_id) {
   }
 }
 
-echo "user_id";
+echo "$user_id";
 
 //Don't know how id is represented
 $id = 1;
