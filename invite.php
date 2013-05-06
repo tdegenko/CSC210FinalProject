@@ -40,7 +40,7 @@ if ($user_id) {
   //$e_id = ?;
   //$e_details = $facebook -> api("/{$e_id}");
 
-  $att = $_REQUEST["attend[]"];
+  $att = $_REQUEST["attend"];
 
   echo "$att";
   //$data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $att)));

@@ -139,7 +139,7 @@ $app_using_friends = $facebook->api(array(
 					
 					
 	          ?>
-	            <input type = "checkbox" name = "attend[]" value = "<?php echo he($id); ?>">
+	            <input type = "checkbox" name = "attend" value = "<?php echo he($id); ?>">
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
 	              <img src="https://graph.facebook.com/<?php echo he($id); ?>/picture?type=square" alt="<?php echo he($name); ?>">
 	              <?php echo he($name); ?>
@@ -150,6 +150,7 @@ $app_using_friends = $facebook->api(array(
 	            }
 	          
 	          ?>
+	        <br>
 			<input type="submit" value="Invite" /></p>
 			</form>
 	        
