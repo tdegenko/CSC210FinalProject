@@ -42,8 +42,8 @@ if ($user_id) {
   //echo "$e_details";
   $att = $_REQUEST["attend"];
 
-  //echo "$att";
-  $data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $att));
+  echo implode(",",$att);
+  $data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $_REQUEST["attend"]));
  
 ?>
 
