@@ -23,7 +23,7 @@
 
 	//Load the class
 	$ipLite = new ip2location_lite;
-	$ipLite->setKey('19bf356b10d1cb49a3118b65335774666a71f1d6971c5f29a96f03b00c334c03');
+	$ipLite->setKey('2961c85aa177053beee919bc6ed8cc4571991f77215ff8562fc0c46e857fb314');
 
 	//Get errors and locations
 	$locations = $ipLite->getCity($_SERVER['REMOTE_ADDR']);
