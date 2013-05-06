@@ -42,7 +42,7 @@ $eids = $facebook->api(array(
   ));
 
 
-  $e_id = implode($eids);
+  $e_id = implode(",",$eids);
   echo "$e_id[0]";
   //$e_details = $facebook -> api("/{$e_id}");
   //echo "$e_details";
