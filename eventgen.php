@@ -47,7 +47,6 @@ if ($user_id) {
   }
 }
 
-
 ?>
 
 
@@ -117,11 +116,6 @@ if ($user_id) {
         <p><input type="submit" value="Create Event" /></p>
     </form>
     <div>
-	
-
-	
-	
-
 <!--    ==================OLD VERSION==================
     </div>
     <form enctype="multipart/form-data" action="<?php echo $event_url; ?>" method="post">
