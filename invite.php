@@ -42,8 +42,8 @@ $eids = $facebook->api(array(
   ));
 
 
-  //$e_id = $eids[0];
-  //echo = "$eids";
+  $e_id = $eids[0];
+  echo "$e_id";
   //$e_details = $facebook -> api("/{$e_id}");
   //echo "$e_details";
   $att = $_REQUEST["attend"];
