@@ -69,11 +69,11 @@ $third = $_POST["third"];
 $query = "SELECT * FROM test1 p WHERE p.uid = $id";
 $results = mysql_query($query);
 
-echo "$id";
+
 
 if (mysql_num_rows($results) == "")
 {
-
+    echo "norecord found";
 	$sql1 = "INSERT INTO test1
 	VALUES
 	('$id', '$first', '$second', '$third')";
@@ -82,7 +82,7 @@ if (mysql_num_rows($results) == "")
 
 else
 {
-
+    echo "update";
 	$sql2 = sprintf("UPDATE test1 SET first_pref = '%s', second_pref = '%s', third_pref = '%s' WHERE uid = '%d'", $first, $second, $third, $id);
 	mysql_query($sql2);
 //	if (!mysql_query($con, $sql2))
