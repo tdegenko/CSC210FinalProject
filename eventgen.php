@@ -128,7 +128,7 @@ $friends = idx($facebook->api('/me/friends?limit=1000'), 'data', array());
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($friend, 'id');
 	              $name = idx($friend, 'name');
-	              $class = ($i++ % 4 === 0) ? 'first-column' : '';
+	              $class = ($i++ % 100 === 0) ? 'first-column' : '';
 	          ?>
 	          <li class="<?php echo $class; ?>">
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
