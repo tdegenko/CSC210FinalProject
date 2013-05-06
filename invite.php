@@ -38,7 +38,7 @@ if ($user_id) {
 
 $eids = $facebook->api(array(
     'method' => 'fql.query',
-    'query' => 'SELECT eid FROM event WHERE creator = $user_id'
+    'query' => 'SELECT eid FROM event WHERE creator = me()'
   ));
 
 
