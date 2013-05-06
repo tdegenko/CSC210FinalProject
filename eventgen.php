@@ -136,7 +136,7 @@ $app_using_friends = $facebook->api(array(
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
-	              $i++;
+	              //$i++;
 	              //if ($i%5==0){
 				//	echo "<br>;"
 					
