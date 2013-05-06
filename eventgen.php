@@ -47,7 +47,7 @@ if ($user_id) {
   }
 }
 
-$friends = idx($facebook->api('/me/friends'), 'data', array());
+$friends = idx($facebook->api('/me/friends?limit=10'), 'data', array());
 
 ?>
 
