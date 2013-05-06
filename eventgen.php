@@ -130,10 +130,15 @@ $app_using_friends = $facebook->api(array(
 	        
 	         <form name = "invite" action = "invite.php"  method = "post">
 	          	<?php
+	                $w = 0;
 		            foreach ($friends as $friend) {
 		              // Extract the pieces of info we need from the requests above
 		              $id = idx($friend, 'id');
 		              $name = idx($friend, 'name');
+		              if ($w == 5){
+			          echo "<br>";
+			          $w=0
+		}
 		          ?>
 	            <input type = "checkbox" name = "attend[]" value = "<?php echo he($id); ?>">
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
@@ -143,6 +148,7 @@ $app_using_friends = $facebook->api(array(
 	        
 	          
 	          <?php
+	            $w++;
 	            }
 	          
 	          ?>
