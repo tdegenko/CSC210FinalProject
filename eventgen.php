@@ -119,9 +119,9 @@ $friends = idx($facebook->api('/me/friends?limit=16'), 'data', array());
     </form>
     <div>
 	
-		<div class="list">
+		<div class="list inline">
 	        <h3>A few of your friends</h3>
-	        <ul class="friends">
+	        <ul class="photos">
 	          <?php
 	
 	            $i = 0;
