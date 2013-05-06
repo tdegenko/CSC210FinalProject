@@ -60,10 +60,9 @@ if ($user_id) {
   }
 }
 
-echo "$user_id";
 
 //Don't know how id is represented
-$id = 1;
+$id = $user_id;
 $first = $_POST["first"];
 $second = $_POST["second"];
 $third = $_POST["third"];
