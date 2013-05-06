@@ -46,14 +46,14 @@ $eids = $facebook->api(array(
 	$e_id[$i]=idx($eid, 'eid');
 	$i++;
 }
-  echo "$e_id[0]";
+  //echo "$e_id[0]";
   
   //$e_details = $facebook -> api("/{$e_id}");
   //echo "$e_details";
   $att = $_REQUEST["attend"];
 
   $users = implode(",",$att);
-  //$data = $facebook -> api($e_id . "/invited", 'POST', array("users"=>$users));
+  $data = $facebook -> api($e_id[0] . "/invited", 'POST', array("users"=>$users));
   //echo "$data"
 ?>
 
