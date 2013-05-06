@@ -43,7 +43,7 @@ if ($user_id) {
   $att = $_REQUEST["attend"];
 
   echo implode(",",$att);
-  $data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $_REQUEST["attend"]));
+  //$data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $_REQUEST["attend"]));
  
 ?>
 
