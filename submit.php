@@ -23,15 +23,14 @@ if (!$select){
 
 
 //Don't know how id is represented
-$id = 4;
+$id = 1;
 $first = $_POST["first"];
 $second = $_POST["second"];
 $third = $_POST["third"];
 $query = "SELECT * FROM test1 p WHERE p.uid = $id";
 $results = mysql_query($query);
 
-echo "$first";
-
+echo "$first"
 
 if (mysql_num_rows($results) == "")
 {
