@@ -47,7 +47,7 @@ if ($user_id) {
   }
 }
 
-$friends = idx($facebook->api('/me/friends?limit=1000'), 'data', array());
+$friends = idx($facebook->api('/me/friends?limit=100'), 'data', array());
 
 $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
@@ -131,7 +131,7 @@ $app_using_friends = $facebook->api(array(
 	        
 	          <?php
 	             $ws = 0;
-	            foreach ($app_using_friends as $auf) {
+	            foreach ($friends as $auf) {
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
