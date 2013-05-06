@@ -47,10 +47,12 @@ if ($user_id) {
   }
 }
 
+$friends = idx($facebook->api('/me/friends'), 'data', array());
+
 $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-   ));
+  ));
 
 ?>
 
@@ -136,6 +138,31 @@ $app_using_friends = $facebook->api(array(
 	              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
 	              <?php echo he($name); ?>
 	            </a>
+	          </li>
+	          <?php
+	            }
+	          ?>
+	        </ul>
+	      </div>
+	
+	
+		<div class="list inline">
+	        <h3>Friends</h3>
+	        <ul class="photos">
+	          <?php
+	            $i = 0;
+	            foreach ($friends as $friend) {
+	              // Extract the pieces of info we need from the requests above
+	              $id = idx($friend, 'id');
+	              $name = idx($friend, 'name');
+
+	              $class = ($i++ % 4 === 0) ? 'first-column' : '';
+	          ?>
+	          <li>
+	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
+	              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
+	              <?php echo he($name); ?>
+	</a>
 	          </li>
 	          <?php
 	            }
