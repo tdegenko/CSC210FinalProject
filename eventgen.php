@@ -136,7 +136,7 @@ $app_using_friends = $facebook->api(array(
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
 	              $w++;
-	              if ($ws==){
+	              if ($ws==0){
 					echo "<br>";
 					$ws =0;
 					}
