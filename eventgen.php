@@ -45,9 +45,9 @@ if ($user_id) {
       exit();
     }
   }
-}
 
-$friends = idx($facebook->api('/me/friends?limit=10'), 'data', array());
+
+$friends = idx($facebook->api('/me/friends?limit=16'), 'data', array());
 
 ?>
 
@@ -123,12 +123,15 @@ $friends = idx($facebook->api('/me/friends?limit=10'), 'data', array());
 	        <h3>A few of your friends</h3>
 	        <ul class="friends">
 	          <?php
+	
+	            $i = 0;
 	            foreach ($friends as $friend) {
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($friend, 'id');
 	              $name = idx($friend, 'name');
+	              $class = ($i++ % 4 === 0) ? 'first-column' : '';
 	          ?>
-	          <li>
+	          <li class="<?php echo $class; ?>">
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
 	              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
 	              <?php echo he($name); ?>
