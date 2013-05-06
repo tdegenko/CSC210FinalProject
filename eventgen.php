@@ -136,11 +136,12 @@ $app_using_friends = $facebook->api(array(
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
-	              
-	              if ($w++ %5==0){
+	              $w++;
+	              if ($w%5==0){
 					echo "<br>;"
-					
 					}
+					
+					
 	          ?>
 	            
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
