@@ -1,4 +1,4 @@
-<form id="preferences" method="get" action="submit.php">
+<form id="preferences" method="post" action="submit.php">
 	<fieldset>
 		<legend>Preferences:</legend>
 		<table width="50%">
