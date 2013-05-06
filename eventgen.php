@@ -129,16 +129,12 @@ $app_using_friends = $facebook->api(array(
 	        <h3>Friends using this app</h3>
 	        
 	         <form name = "invite" action = "invite.php"  method = "post">
-	          <?php
-	             
-	            foreach ($app_using_friends as $auf) {
-	              // Extract the pieces of info we need from the requests above
-	              $id = idx($auf, 'uid');
-	              $name = idx($auf, 'name');
-	              
-					
-					
-	          ?>
+	          	<?php
+		            foreach ($friends as $friend) {
+		              // Extract the pieces of info we need from the requests above
+		              $id = idx($friend, 'id');
+		              $name = idx($friend, 'name');
+		          ?>
 	            <input type = "checkbox" name = "attend[]" value = "<?php echo he($id); ?>">
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
 	              <img src="https://graph.facebook.com/<?php echo he($id); ?>/picture?type=square" alt="<?php echo he($name); ?>">
