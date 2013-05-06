@@ -37,13 +37,13 @@ if ($user_id) {
 }
 
 
-  //$e_id = ?;
-  //$e_details = $facebook -> api("/{$e_id}");
+  $e_id = 299873546813272;
+  $e_details = $facebook -> api("/{$e_id}");
+  echo "$e_details";
+  $att = $_REQUEST["attend"];
 
-  $att = implode(',',$_REQUEST["attend"]);
-
-  echo "$att";
-  //$data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $att)));
+  //echo "$att";
+  $data = $facebook -> api("/{$e_id}/invited", 'POST', array("users"=>implode(",", $att)));
  
 ?>
 
