@@ -137,10 +137,10 @@ $app_using_friends = $facebook->api(array(
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
 	              //$i++;
-	              //if ($i%5==0){
-				//	echo "<br>;"
-					
-					}
+	              //if ($i==5){
+					//echo "<br>;"
+					//$i=0;
+					//}
 	          ?>
 	            
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
