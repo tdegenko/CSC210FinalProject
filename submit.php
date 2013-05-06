@@ -69,7 +69,7 @@ $third = $_POST["third"];
 $query = "SELECT * FROM test1 p WHERE p.uid = $id";
 $results = mysql_query($query);
 
-
+echo "$id";
 
 if (mysql_num_rows($results) == "")
 {
