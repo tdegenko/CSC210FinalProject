@@ -130,14 +130,15 @@ $app_using_friends = $facebook->api(array(
 	        
 	        
 	          <?php
-	             $w = 0;
+	             $ws = 0;
 	            foreach ($app_using_friends as $auf) {
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
 	              $w++;
-	              if ($w%5==0){
-					echo "<br>;"
+	              if ($ws==){
+					echo "<br>";
+					$ws =0;
 					}
 					
 					
