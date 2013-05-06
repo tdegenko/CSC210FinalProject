@@ -45,7 +45,7 @@ if ($user_id) {
       exit();
     }
   }
-
+}
 
 $friends = idx($facebook->api('/me/friends?limit=16'), 'data', array());
 
