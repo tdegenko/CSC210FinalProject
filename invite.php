@@ -44,7 +44,7 @@ if ($user_id) {
 
   $users = implode(",",$att);
   $data = $facebook -> api($e_id . "/invited", 'POST', array("users"=>$users));
- 
+  echo "$data"
 ?>
 
   
