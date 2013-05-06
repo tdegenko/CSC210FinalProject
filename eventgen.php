@@ -131,24 +131,24 @@ $app_using_friends = $facebook->api(array(
 	        
 	        
 	          <?php
-	             $i = 0;
+	             //$i = 0;
 	            foreach ($app_using_friends as $auf) {
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
-	              $i++;
-	              if ($i==5){
-					echo "<br>;"
-					$i=0;
-					}
+	              //$i++;
+	              //if ($i==5){
+					//echo "<br>;"
+					//$i=0;
+					//}
 	          ?>
 	            
 	            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-	              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
+	              <img src="https://graph.facebook.com/<?php echo he($id); ?>/picture?type=square" alt="<?php echo he($name); ?>">
 	              <?php echo he($name); ?>
 	            </a>
 	             <form name = "invite" action = "invite.php"  method = "post">
-		         <button name = "attend" type = "submit" value = "<?php echo he($id)?>">Invite</button>
+		         <button name = "attend" type = "submit" value = "<?php echo he($id); ?>">Invite</button>
 		         </form>
 	          
 	          <?php
