@@ -131,7 +131,7 @@ $app_using_friends = $facebook->api(array(
 	        
 	        
 	          <?php
-	             $i = 0;
+	             //$i = 0;
 	            foreach ($app_using_friends as $auf) {
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
