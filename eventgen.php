@@ -137,9 +137,9 @@ $app_using_friends = $facebook->api(array(
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
 	              $i++;
-	              if ($i==5){
+	              if ($i%5==0){
 					echo "<br>;"
-					$i=0;
+					
 					}
 	          ?>
 	            
