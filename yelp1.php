@@ -32,9 +32,9 @@
 	echo "$errors";
 
 	//Getting the result
-	$latitude = $locations['latitude'];
-	$longitude = $locations['longitude'];
-	$city = $locations['cityName'];
+	$latitude = "43.1333";
+	$longitude = "-77.6018";
+	$city = "Rochester";
 
 	echo "Current Position: $city ($latitude : $longitude)";
 	echo "<br>";
