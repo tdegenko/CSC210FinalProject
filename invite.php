@@ -41,9 +41,13 @@ $eids = $facebook->api(array(
     'query' => 'SELECT eid FROM event WHERE creator = me()'
   ));
 
-
-
-  echo "$eids[0][1]";
+  $i=0;
+  foreach ($eids as $eid){
+	$e_id[$i]=idx($eid, 'eid');
+	$i++;
+}
+  echo "$e_id[0]";
+  
   //$e_details = $facebook -> api("/{$e_id}");
   //echo "$e_details";
   $att = $_REQUEST["attend"];
