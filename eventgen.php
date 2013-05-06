@@ -135,12 +135,12 @@ $app_using_friends = $facebook->api(array(
 	              // Extract the pieces of info we need from the requests above
 	              $id = idx($auf, 'uid');
 	              $name = idx($auf, 'name');
-	              $w++;
+	              
 	              if ($ws==5){
 					echo "<br>";
 					$ws =0;
 					}
-					
+				 
 					
 	          ?>
 	            
@@ -153,6 +153,7 @@ $app_using_friends = $facebook->api(array(
 		         </form>
 	          
 	          <?php
+	            $ws++;
 	            }
 	          ?>
 	        
