@@ -61,7 +61,6 @@ if ($user_id) {
 }
 
 
-//Don't know how id is represented
 $id = $user_id;
 $first = $_POST["first"];
 $second = $_POST["second"];
@@ -73,7 +72,7 @@ $results = mysql_query($query);
 
 if (mysql_num_rows($results) == "")
 {
-    echo "norecord found";
+    echo "New account detected";
 	$sql1 = "INSERT INTO test1
 	VALUES
 	('$id', '$first', '$second', '$third')";
@@ -82,7 +81,7 @@ if (mysql_num_rows($results) == "")
 
 else
 {
-    echo "update";
+    echo "Account updated";
 	$sql2 = sprintf("UPDATE test1 SET first_pref = '%s', second_pref = '%s', third_pref = '%s' WHERE uid = '%d'", $first, $second, $third, $id);
 	mysql_query($sql2);
 //	if (!mysql_query($con, $sql2))
@@ -92,7 +91,10 @@ else
 }
 
 
-echo "Preferences saved";
+echo "<br />Preferences saved";
 
 //mysql_close($con);
 ?>
+<script language=”javascript” type=”text/javascript”>
+window.location.href = '../';
+</script>
